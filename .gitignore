@@ -1,0 +1,11 @@
+#virtual env
+/virtenv
+
+#py compile
+*.pyc
+
+#instance config
+/instance
+
+#swap files
+*.swp
