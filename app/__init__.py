@@ -25,10 +25,11 @@ def create_app(config_name):
 	login_manager.login_view = "auth.login"
 
 	migrate = Migrate(app, db)
-	from app import models
+	from models import student,advisor,feedback,batch
 
 	@app.route('/')
     	def hello_world():
         	return 'Hello, World!'
 
 	return app
+

@@ -3,10 +3,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db, login_manager
 
+	
+
 
 #Naming convention - full forms with '_' between each words
 
-class Student(db.Model):
+class Student(UserMixin,db.Model):
 
 		__tablename__ = 'student'
 
@@ -19,6 +21,9 @@ class Student(db.Model):
 		contact_number = db.Column(db.Integer)
 		address = db.Column(db.String(50))
 		date_of_birth = db.Column(db.DateTime)
+
+		#batch
+		batch_id = db.Column(db.String(30),db.ForeignKey('batch.batch_id'))
 
 		#academics
 		specialization_ug = db.Column(db.String(30))
