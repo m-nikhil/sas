@@ -1,7 +1,7 @@
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import db, login_manager
+from app import db
 
 #Naming convention - full forms with '_' between each wor
 
@@ -17,7 +17,7 @@ class Batch(UserMixin,db.Model):
 		aptitude_advisor_id = db.Column(db.String(30),db.ForeignKey('advisor.employee_id'))
 
 		#relations
-		student = db.relationship('Students',backref="batch",lazy="dynamic")
+		student = db.relationship('Student',backref="batch",lazy="dynamic")
 
 
 

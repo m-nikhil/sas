@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db, login_manager
 
-#Naming convention - full forms with '_' between each wor
+#Naming convention - full forms with '_' between each word
 
 class Advisor(UserMixin,db.Model):
 
@@ -20,7 +20,7 @@ class Advisor(UserMixin,db.Model):
 		date_of_birth = db.Column(db.DateTime)
 
 		#admin or not
-		role = db.Column(db.String(300),nullable=False)
+		role = db.Column(db.Enum('admin','verbal','ssk','aptitude'),default = 'ssk')
 
 		#relationship
 		ssk_advisor_batch = db.relationship('Batch',foreign_keys='Batch.ssk_advisor_id',backref="ssk_advisor",lazy="dynamic")

@@ -3,9 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db, login_manager
 
-	
-
-
 #Naming convention - full forms with '_' between each words
 
 class Student(UserMixin,db.Model):

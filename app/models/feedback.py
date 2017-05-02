@@ -1,7 +1,7 @@
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from app import db, login_manager
+from app import db
 
 #Naming convention - full forms with '_' between each wor
 
@@ -10,10 +10,10 @@ class Feedback(UserMixin,db.Model):
 
 		__tablename__ = "feedback"
 
-		feedback_id = db.Column(db.Integer,primary_key=True, autoincrement=True )
+		feedback_id = db.Column(db.Integer,primary_key=True, autoincrement=True, index=True )
 
 		student_id = db.Column(db.String(30),db.ForeignKey('student.roll_number'),nullable=False)
-		semester = db.Column(db.Integer,nullable=False)
+		semester = db.Column(db.Enum('1','2','3','4','5','6','7','8'),nullable=False)
 
 		#form
 		quantitive_ability_score = db.Column(db.Integer)

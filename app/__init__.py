@@ -7,10 +7,11 @@ from flask_migrate import Migrate
 #local imports
 from config import app_config
 
+
 #db initialization
 db = SQLAlchemy()
 
-#login manager initialization
+#login manager initializations
 login_manager = LoginManager()
 
 def create_app(config_name):
@@ -26,6 +27,13 @@ def create_app(config_name):
 
 	migrate = Migrate(app, db)
 	from models import student,advisor,feedback,batch
+
+	#loading sample db
+	
+	if(config_name == "development"):
+		with app.test_request_context():
+			from models import load_db	
+			load_db.load_db(db)
 
 	@app.route('/')
     	def hello_world():
